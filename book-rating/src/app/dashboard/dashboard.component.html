@@ -1,5 +1,9 @@
 
-<br-book [book]="books[0]"></br-book>
+<br-book
+  *ngFor="let b of books"
+  [book]="b"></br-book>
 
 
-<h1 [ngClass]="cssClassToUse">TEST</h1>
+<h1 *ngIf="todayIsTuesday">Heute ist Dienstag</h1>
+
+<button (click)="changeDay()">Click mich!</button>

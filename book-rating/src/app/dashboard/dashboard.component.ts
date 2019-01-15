@@ -10,9 +10,14 @@ export class DashboardComponent implements OnInit {
 
   books: Book[];
 
-  cssClassToUse = 'myClass' + '1';
+  todayIsTuesday = true;
 
   constructor() {
+    setTimeout(() => this.todayIsTuesday = false, 1000);
+  }
+
+  changeDay() {
+    this.todayIsTuesday = true;
   }
 
   ngOnInit() {
