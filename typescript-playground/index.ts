@@ -1,11 +1,4 @@
-class Test {
-    constructor(private id: number) {
-        console.log('Hallo München!', this.id)
-    }
+import { Test } from "./test";
 
-    test() {
-        console.log('test')
-    }
-}
 
 let test = new Test(42);
