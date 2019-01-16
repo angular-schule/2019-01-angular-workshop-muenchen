@@ -31,26 +31,20 @@ export class DashboardComponent implements OnInit {
       isbn: '111',
       title: 'AngularJs',
       description: ':-)',
-      rating: 5
+      rating: 4
     },
     {
       isbn: '222',
       title: 'Der große Polt',
       description: 'Ein Konversationslexikon',
-      rating: 5
-    }
-
-
-    ];
+      rating: 1
+    }];
   }
 
-  updateAndSort(book: Book) {
-
-    // TODO
-    // - Kopie erstellen
-    // - Buch austauschen
-    // - Sortieren
-    this.books = [];
+  updateAndSort(ratedBook: Book) {
+    this.books = this.books
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+      .sort((a, b) => b.rating - a.rating);
   }
 
 }
