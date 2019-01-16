@@ -44,4 +44,13 @@ export class DashboardComponent implements OnInit {
     ];
   }
 
+  updateAndSort(book: Book) {
+
+    // TODO
+    // - Kopie erstellen
+    // - Buch austauschen
+    // - Sortieren
+    this.books = [];
+  }
+
 }

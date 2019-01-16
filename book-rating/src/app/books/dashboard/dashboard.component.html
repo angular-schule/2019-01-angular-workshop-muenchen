@@ -6,7 +6,9 @@
   }"
   >
   <br-book
-    [book]="b"></br-book>
+    [book]="b"
+    (rated)="updateAndSort($event)"
+    ></br-book>
 </div>
 
 <button class="btn btn-primary">

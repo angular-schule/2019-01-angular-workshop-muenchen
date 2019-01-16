@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../shared/book';
+import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'br-book',
@@ -11,4 +12,19 @@ export class BookComponent {
   @Input()
   book: Book;
 
+  @Output()
+  rated = new EventEmitter<Book>();
+
+  constructor(private service: BookRatingService) {
+  }
+
+  rateDown() {
+    const ratedBook = this.service.rateDown(this.book);
+    this.rated.emit(ratedBook);
+  }
+
+  rateUp() {
+    const ratedBook = this.service.rateUp(this.book);
+     this.rated.emit(ratedBook);
+  }
 }
