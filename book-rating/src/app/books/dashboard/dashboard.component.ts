@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -8,37 +9,14 @@ import { Book } from '../shared/book';
 })
 export class DashboardComponent implements OnInit {
 
-  books: Book[];
+  books: Book[] = [];
 
-  todayIsTuesday = true;
-
-  constructor() {
-    setTimeout(() => this.todayIsTuesday = false, 1000);
-  }
-
-  changeDay() {
-    this.todayIsTuesday = true;
+  constructor(private bs: BookStoreService) {
   }
 
   ngOnInit() {
-    this.books = [{
-      isbn: '000',
-      title: 'Angular',
-      description: 'Das beste Buch der Welt',
-      rating: 5
-    },
-    {
-      isbn: '111',
-      title: 'AngularJs',
-      description: ':-)',
-      rating: 4
-    },
-    {
-      isbn: '222',
-      title: 'Der große Polt',
-      description: 'Ein Konversationslexikon',
-      rating: 1
-    }];
+    this.bs.getAll()
+      .subscribe(books => this.books = books);
   }
 
   updateAndSort(ratedBook: Book) {
