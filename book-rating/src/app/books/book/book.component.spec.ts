@@ -4,7 +4,7 @@ import { BookComponent } from './book.component';
 import { BookRatingService } from '../shared/book-rating.service';
 import { By } from '@angular/platform-browser';
 
-fdescribe('BookComponent', () => {
+describe('BookComponent', () => {
   let component: BookComponent;
   let fixture: ComponentFixture<BookComponent>;
 
