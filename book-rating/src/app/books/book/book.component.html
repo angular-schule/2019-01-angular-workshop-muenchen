@@ -11,7 +11,7 @@
         {{ book.title }}
         <span class="badge badge-secondary">{{ book.rating }}</span>
 
-        ⭐️⭐️⭐️⭐️⭐️
+        <ng-container *ngFor="let item of rating">⭐️</ng-container>
       </h2>
     </div>
     <p>

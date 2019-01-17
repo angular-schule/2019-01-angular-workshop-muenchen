@@ -27,4 +27,8 @@ export class BookComponent {
     const ratedBook = this.service.rateUp(this.book);
      this.rated.emit(ratedBook);
   }
+
+  get rating() {
+    return new Array(this.book.rating);
+  }
 }
