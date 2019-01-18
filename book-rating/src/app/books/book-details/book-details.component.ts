@@ -4,7 +4,7 @@ import { BookStoreService } from '../shared/book-store.service';
 import { Book } from '../shared/book';
 import { map, switchMap, filter, reduce, scan, tap, catchError, mergeMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { of, timer, interval, Observable, never, empty } from 'rxjs';
+import { of, timer, interval, Observable, never, EMPTY } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -28,7 +28,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       map(params => params.get('isbn')),
       switchMap(isbn => this.bookService.getBook(isbn)
         .pipe(
-          catchError(() => empty())
+          catchError(() => EMPTY)
         ))
       // catchError - HIER NICHT
     ).subscribe(
