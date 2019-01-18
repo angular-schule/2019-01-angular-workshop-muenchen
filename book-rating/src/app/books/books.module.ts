@@ -7,13 +7,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
 
 @NgModule({
   declarations: [
     BookComponent,
     DashboardComponent,
     CreateBookComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    TestDetailsComponent
   ],
   imports: [
     CommonModule,

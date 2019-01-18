@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'br-book-details',
-  templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.scss']
+  selector: 'br-test-details',
+  templateUrl: './test-details.component.html',
+  styleUrls: ['./test-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class TestDetailsComponent implements OnInit {
 
   isbn: string;
 
@@ -17,7 +17,7 @@ export class BookDetailsComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         this.isbn = params.get('isbn');
-        console.log('Im still alive -- BookDetailsComponent');
+        console.log('Im still alive -- TestDetailsComponent');
       });
   }
 
