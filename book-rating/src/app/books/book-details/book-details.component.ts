@@ -24,8 +24,7 @@ export class BookDetailsComponent implements OnInit {
       map(params => params.get('isbn')),
       switchMap(isbn => this.bookService.getBook(isbn)
         .pipe(catchError(() => EMPTY))
-      ),
-      share()
+      )
     );
   }
 }
