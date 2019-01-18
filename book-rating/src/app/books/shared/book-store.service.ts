@@ -20,7 +20,7 @@ export class BookStoreService {
       );
   }
 
-  getSingle(isbn: string): Observable<Book> {
+  getBook(isbn: string): Observable<Book> {
     return this.http
       .get<Book>('https://api.angular.schule/books/' + isbn);
   }
