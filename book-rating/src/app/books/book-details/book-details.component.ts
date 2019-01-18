@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookStoreService } from '../shared/book-store.service';
 import { Book } from '../shared/book';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { of, timer, interval } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -17,11 +19,44 @@ export class BookDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // from array
+    // from(['A', 'B', 'C'])
+
+    // interval(2000).subscribe(e => console.log(e));
+
+    // creation function
+    of('A', 'B', 'C').subscribe(
+      d => console.log(d),
+      () => {},
+      () => console.log('COMPLETED!')
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     this.route.paramMap.pipe(
       map(params => params.get('isbn')),
-      map(isbn => this.bookService.getBook(isbn))
-    ).subscribe(data => {
-      data.subscribe(book => this.book = book);
-    });
+      switchMap(isbn => this.bookService.getBook(isbn))
+    ).subscribe(
+      book => this.book = book,
+      (e: HttpErrorResponse) => this.book = {
+        isbn: '?',
+        title: 'Status:' + e.status,
+        description: e.message,
+        rating: 1
+      }
+    );
   }
 }
